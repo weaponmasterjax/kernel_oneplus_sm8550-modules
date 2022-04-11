@@ -72,6 +72,8 @@
 
 #define KEY_GESTURE_START 246
 
+#define KEY_GESTURE_START 246
+
 #define HEALTH_REPORT_GRIP          "grip_report"
 #define HEALTH_REPORT_BASELINE_ERR  "baseline_err"
 #define HEALTH_REPORT_NOISE         "noise_count"
