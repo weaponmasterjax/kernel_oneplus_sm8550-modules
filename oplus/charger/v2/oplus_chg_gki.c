@@ -724,8 +724,6 @@ static int battery_psy_get_prop(struct power_supply *psy,
 		pval->intval = chip->batt_rm * 1000;
 		break;
 	case POWER_SUPPLY_PROP_CYCLE_COUNT:
-		if (chip->charger_cycle < 0)
-			chip->charger_cycle = 0;
 		pval->intval = oplus_gauge_get_batt_cc();
 		break;
 	case POWER_SUPPLY_PROP_CHARGE_FULL_DESIGN:
