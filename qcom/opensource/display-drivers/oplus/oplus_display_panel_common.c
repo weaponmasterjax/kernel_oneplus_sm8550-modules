@@ -2783,7 +2783,7 @@ void oplus_save_last_mode(struct dsi_display *display)
 	}
 
 	if ((!strcmp(display->panel->name, "AA551 P 3 A0004 dsc cmd mode panel"))
-			|| (!strcmp(display->panel->name, "AC052 S 3 A0001 dsc cmd mode panel"))) {
+		|| (!strcmp(display->panel->name, "AC052 S 3 A0001 dsc cmd mode panel"))) {
 		display->panel->last_us_per_frame = display->panel->cur_mode->priv_info->vsync_period;
 		display->panel->last_vsync_width = display->panel->cur_mode->priv_info->vsync_width;
 		display->panel->last_refresh_rate = display->panel->cur_mode->timing.refresh_rate;
