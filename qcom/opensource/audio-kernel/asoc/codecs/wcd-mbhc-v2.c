@@ -2325,13 +2325,6 @@ int wcd_mbhc_start(struct wcd_mbhc *mbhc, struct wcd_mbhc_config *mbhc_cfg)
 			#endif /* OPLUS_ARCH_EXTENDS */
 		}
 
-		#if IS_ENABLED(CONFIG_OPLUS_FEATURE_MM_FEEDBACK)
-		mbhc->hp_wake_lock = wakeup_source_register(NULL, "hp_wake_lock");
-		if (!mbhc->hp_wake_lock) {
-			pr_err("%s: wakeup_source_register failed\n", __func__);
-		}
-		INIT_DELAYED_WORK(&mbhc->hp_irq_chk_work, wcd_check_plug_irq_fn);
-		#endif /* OPLUS_FEATURE_MM_FEEDBACK */
 	}
 
 	#ifdef OPLUS_ARCH_EXTENDS
@@ -2379,8 +2372,6 @@ void wcd_mbhc_stop(struct wcd_mbhc *mbhc)
 		mbhc->mbhc_cal = NULL;
 	}
 
-#if IS_ENABLED(CONFIG_OPLUS_FEATURE_MM_FEEDBACK)
-	if (mbhc->mbhc_cfg->enable_usbc_analog) {
 #if IS_ENABLED(CONFIG_QCOM_WCD_USBSS_I2C)
 		if (mbhc->wcd_aatc_dev_np)
 			wcd_usbss_unreg_notifier(&mbhc->aatc_dev_nb, mbhc->wcd_aatc_dev_np);
