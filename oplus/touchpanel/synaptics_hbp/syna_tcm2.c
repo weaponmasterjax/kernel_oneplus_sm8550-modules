@@ -52,7 +52,13 @@
 #endif
 #include "touchpanel_proc.h"
 #include "synaptics_common.h"
+#include "touchpanel_healthinfo/touchpanel_healthinfo.h"
+#include "touchpanel_healthinfo/touchpanel_exception.h"
+#ifdef BUILD_BY_BAZEL
+#include <soc/oplus/touchpanel_event_notify.h>/* kernel 6.1 */
+#else
 #include "../oplus_touchscreen_v2/touchpanel_notify/touchpanel_event_notify.h"
+#endif
 #include "touchpanel_autotest/touchpanel_autotest.h"
 #include "touch_comon_api/touch_comon_api.h"
 

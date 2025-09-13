@@ -44,7 +44,11 @@
 #ifdef HAS_TESTING_FEATURE
 #include "syna_tcm2_testing.h"
 #endif
+#ifdef BUILD_BY_BAZEL
+#include <soc/oplus/touchpanel_event_notify.h>/* kernel 6.1 */
+#else
 #include "../oplus_touchscreen_v2/touchpanel_notify/touchpanel_event_notify.h"
+#endif
 
 #if (KERNEL_VERSION(5, 9, 0) <= LINUX_VERSION_CODE) || \
 	defined(HAVE_UNLOCKED_IOCTL)
