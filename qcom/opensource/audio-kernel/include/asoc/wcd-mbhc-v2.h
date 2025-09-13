@@ -688,6 +688,10 @@ struct wcd_mbhc {
 	unsigned int headset_detect_mode;
 	#endif /* OPLUS_ARCH_EXTENDS */
 
+	#if IS_ENABLED(CONFIG_OPLUS_FEATURE_MM_FEEDBACK)
+	struct delayed_work hp_irq_chk_work;
+	struct wakeup_source *hp_wake_lock;
+	#endif /* OPLUS_FEATURE_MM_FEEDBACK */
 };
 
 void wcd_mbhc_find_plug_and_report(struct wcd_mbhc *mbhc,
