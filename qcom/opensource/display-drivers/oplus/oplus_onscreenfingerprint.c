@@ -2452,6 +2452,15 @@ bool oplus_ofp_backlight_filter(void *dsi_panel, unsigned int bl_level)
 		/* backlight will affect hbm on time in some panel, need to separate the 51 cmd for stable hbm on time */
 		OFP_INFO("dim layer exist, filter backlight %u setting in advance\n", bl_level);
 		need_filter_backlight = true;
+	} else if (display->panel->power_mode == SDE_MODE_DPMS_ON && bl_level > 0) {
+		if (oplus_ofp_get_aod_state()) {
+			OFP_INFO("force clear stuck aod_state in DPMS_ON\n");
+			oplus_ofp_set_aod_state(false);
+		}
+		if (p_oplus_ofp_params->aod_unlocking) {
+			p_oplus_ofp_params->aod_unlocking = false;
+		}
+		need_filter_backlight = false;
 	} else if (oplus_ofp_get_aod_state()) {
 		OFP_INFO("aod state is true, filter backlight %u setting\n", bl_level);
 		need_filter_backlight = true;
